@@ -2,7 +2,7 @@
 
 define bundle stack "subscription" {
   metadata {
-    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.input.stage.value}/subscription"
+    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/subscription"
     name = "Subscription"
 
     tags = [
@@ -10,7 +10,7 @@ define bundle stack "subscription" {
       "${bundle.class}/subscription",
 
       "project/${bundle.input.project.value}",
-      "stage/${bundle.input.stage.value}",
+      "environment/${bundle.environment.id}",
     ]
   }
 
@@ -18,7 +18,7 @@ define bundle stack "subscription" {
     source = "/components/resource-context"
     inputs = {
       tenant = bundle.input.tenant.value
-      stage  = bundle.input.stage.value
+      stage  = bundle.environment.id
       names  = [bundle.input.project.value]
     }
   }
@@ -29,7 +29,7 @@ define bundle stack "subscription" {
     inputs = {
       budget_amount = (bundle.input.budget_amount.value > 0
         ? bundle.input.budget_amount.value
-        : tm_try(global.component_defaults.subscription.budget_amount, -1)
+        : tm_try(global.component_defaults.subscription.budget_amount, 100)
       )
 
       resource_providers = tm_concat(

@@ -17,16 +17,6 @@ define bundle {
     # TODO: How to ensure the value is lowercase? Terraform "validation" blocks would be great.
   }
 
-  input "stage" {
-    type        = string
-    prompt      = "Stage"
-    description = "Choose a stage"
-    options = [
-      for k, v in global.stages : { name = v, value = k }
-    ]
-    multiselect = false
-  }
-
   input "budget_amount" {
     type        = number
     prompt      = "Monthly budget"

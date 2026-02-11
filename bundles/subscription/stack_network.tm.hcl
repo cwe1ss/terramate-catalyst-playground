@@ -2,7 +2,7 @@ define bundle stack "network" {
   condition = bundle.input.network_cidr_range.value != null && bundle.input.network_cidr_range.value != ""
 
   metadata {
-    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.input.stage.value}/network"
+    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/network"
 
     name        = "Network"
     description = <<-EOF
@@ -14,7 +14,7 @@ define bundle stack "network" {
       "${bundle.class}/network",
 
       "project/${bundle.input.project.value}",
-      "stage/${bundle.input.stage.value}",
+      "environment/${bundle.environment.id}",
     ]
 
     after = [
@@ -26,7 +26,7 @@ define bundle stack "network" {
     source = "/components/resource-context"
     inputs = {
       tenant = bundle.input.tenant.value
-      stage  = bundle.input.stage.value
+      stage  = bundle.environment.id
       names  = [bundle.input.project.value]
     }
   }

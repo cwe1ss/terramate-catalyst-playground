@@ -2,7 +2,7 @@ define bundle stack "firewall" {
   condition = tm_length(bundle.input.firewall_internet_allowed_fqdns.value) > 0
 
   metadata {
-    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.input.stage.value}/firewall"
+    path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/firewall"
     name = "Firewall"
 
     tags = [
@@ -10,7 +10,7 @@ define bundle stack "firewall" {
       "${bundle.class}/firewall",
 
       "project/${bundle.input.project.value}",
-      "stage/${bundle.input.stage.value}",
+      "environment/${bundle.environment.id}",
     ]
 
     after = [
@@ -23,7 +23,7 @@ define bundle stack "firewall" {
     source = "/components/resource-context"
     inputs = {
       tenant = bundle.input.tenant.value
-      stage  = bundle.input.stage.value
+      stage  = bundle.environment.id
       names  = [bundle.input.project.value]
     }
   }

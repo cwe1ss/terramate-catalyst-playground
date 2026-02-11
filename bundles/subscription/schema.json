@@ -32,64 +32,73 @@
           "type": "string"
         },
         "inputs": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "tenant": {
-              "type": "string"
-            },
-            "project": {
-              "type": "string"
-            },
-            "stage": {
-              "type": "string"
-            },
-            "budget_amount": {
-              "type": "number"
-            },
-            "resource_providers": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "iam_admin_users": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "iam_readonly_users": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "network_cidr_range": {
-              "type": "string"
-            },
-            "firewall_internet_allowed_fqdns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "tenant",
-            "project",
-            "stage"
-          ]
+          "$ref": "#/definitions/inputs"
         }
       },
       "required": [
         "source",
         "inputs"
       ]
+    },
+    "environments": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "inputs": {
+            "$ref": "#/definitions/inputs"
+          }
+        }
+      }
     }
   },
   "required": [
     "apiVersion",
     "kind"
-  ]
+  ],
+  "definitions": {
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tenant": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "budget_amount": {
+          "type": "number"
+        },
+        "resource_providers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "iam_admin_users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "iam_readonly_users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "network_cidr_range": {
+          "type": "string"
+        },
+        "firewall_internet_allowed_fqdns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
 }

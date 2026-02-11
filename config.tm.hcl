@@ -11,9 +11,5 @@ globals {
     "mars"  = "Organization Mars"
     "venus" = "Organization Venus"
   }
-  stages = {
-    dev = "Development"
-    prd = "Production"
-  }
 }
 

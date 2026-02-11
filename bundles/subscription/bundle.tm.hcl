@@ -9,8 +9,13 @@ define bundle metadata {
 }
 
 define bundle {
+
+  environments {
+    required = true
+  }
+
   scaffolding {
-    path = "/configs/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.input.stage.value}.tm.yml"
-    name = tm_join("-", tm_slug([bundle.input.tenant.value, bundle.input.project.value, bundle.input.stage.value]))
+    path = "/configs/${bundle.input.tenant.value}-${bundle.input.project.value}.tm.yml"
+    name = tm_join("-", tm_slug([bundle.input.tenant.value, bundle.input.project.value]))
   }
 }
