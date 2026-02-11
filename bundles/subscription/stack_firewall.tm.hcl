@@ -43,7 +43,8 @@ define bundle stack "firewall" {
     source = "/components/az-subscription-firewall"
 
     inputs = {
-      hcl_reference_network  = "module.network.outputs.network"
+      hcl_reference_network = "module.network.outputs.network"
+
       internet_allowed_fqdns = bundle.input.firewall_internet_allowed_fqdns.value
     }
   }

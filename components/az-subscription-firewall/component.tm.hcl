@@ -9,7 +9,7 @@ define "component" {
     type = string
   }
   input "internet_allowed_fqdns" {
-    type        = string
+    type        = list(string)
     description = "Allowed FQDNs for outbound internet access via HTTPS"
   }
 }

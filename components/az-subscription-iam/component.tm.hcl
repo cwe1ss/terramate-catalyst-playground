@@ -4,10 +4,11 @@ define "component" "metadata" {
   name    = "az-subscription-iam"
 }
 define "component" {
+  input "hcl_reference_subscription" {
+    type = string
+  }
   input "groups" {
-    type = map(object({
-      users = list(string)
-    }))
+    type = map(any)
   }
 }
 
@@ -17,12 +18,13 @@ generate_hcl "main.tf" {
       labels = ["iam"]
       attributes = {
         for key, input in component.input : key => input.value
+        if !tm_startswith(key, "hcl_")
       }
 
       content {
         source       = tm_source(".")
         context      = module.this.context
-        subscription = module.subscription
+        subscription = tm_hcl_expression(component.input.hcl_reference_subscription.value)
       }
     }
 

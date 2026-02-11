@@ -11,8 +11,6 @@ spec:
     project: asterix
     stage: dev
 
-    budget_amount: 200
-
     resource_providers:
       - "Microsoft.Network"
 

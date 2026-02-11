@@ -27,10 +27,9 @@ define bundle stack "subscription" {
     source = "/components/az-subscription"
 
     inputs = {
-      budget_amount = tm_coalesce(
-        tm_try(bundle.input.budget_amount.value, null),
-        tm_try(global.component_defaults.subscription.budget_amount, null),
-        0,
+      budget_amount = (bundle.input.budget_amount.value > 0
+        ? bundle.input.budget_amount.value
+        : tm_try(global.component_defaults.subscription.budget_amount, -1)
       )
 
       resource_providers = tm_concat(
@@ -44,6 +43,8 @@ define bundle stack "subscription" {
     source = "/components/az-subscription-iam"
 
     inputs {
+      hcl_reference_subscription = "module.subscription"
+
       groups = {
         admin = {
           users = bundle.input.iam_admin_users.value

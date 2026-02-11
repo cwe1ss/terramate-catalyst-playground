@@ -47,7 +47,8 @@ define bundle stack "network" {
 
     inputs = {
       hcl_reference_subscription = "module.subscription.outputs.subscription"
-      cidr_range                 = bundle.input.network_cidr_range.value
+
+      cidr_range = bundle.input.network_cidr_range.value
     }
   }
 }
