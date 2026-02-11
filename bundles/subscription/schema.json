@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "const": "terramate.io/cli/v1"
+    },
+    "kind": {
+      "const": "BundleInstance"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "uuid"
+      ]
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tenant": {
+              "type": "string"
+            },
+            "project": {
+              "type": "string"
+            },
+            "stage": {
+              "type": "string"
+            },
+            "budget_amount": {
+              "type": "number"
+            },
+            "resource_providers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "iam_admin_users": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "iam_readonly_users": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "network_cidr_range": {
+              "type": "string"
+            },
+            "firewall_internet_allowed_fqdns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "tenant",
+            "project",
+            "stage"
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "inputs"
+      ]
+    }
+  },
+  "required": [
+    "apiVersion",
+    "kind"
+  ]
+}

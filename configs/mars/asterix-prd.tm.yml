@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=../../bundles/subscription/schema.json
+apiVersion: terramate.io/cli/v1
+kind: BundleInstance
+metadata:
+  name: mars-asterix-prd
+  uuid: fd4c607b-c66a-48d9-8f60-08323148cf3b
+spec:
+  source: /bundles/subscription
+  inputs:
+    tenant: mars
+    project: asterix
+    stage: prd
+
+    resource_providers:
+      - "Microsoft.Network"
+
+    iam_admin_users:
+      - "admin@example.org"
+
+    iam_readonly_users:
+      - "cto@example.org"
+
+    network_cidr_range: "192.168.2.0/24"
+
+    firewall_internet_allowed_fqdns:
+      - "terramate.io"
+      - "example.org"
