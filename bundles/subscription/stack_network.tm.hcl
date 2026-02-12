@@ -31,13 +31,16 @@ define bundle stack "network" {
     }
   }
 
-  component "subscription" {
-    source = "/components/remote-state"
+  component "data" {
+    source = "/components/component-data"
     inputs = {
-      module_name = "subscription"
-      backend     = "local"
-      config = {
-        path = "../subscription/terraform.tfstate"
+      components = {
+        subscription = {
+          backend = "local"
+          config = {
+            path = "../subscription/terraform.tfstate"
+          }
+        }
       }
     }
   }
@@ -46,7 +49,7 @@ define bundle stack "network" {
     source = "/components/az-subscription-network"
 
     inputs = {
-      hcl_reference_subscription = "module.subscription.outputs.subscription"
+      hcl_reference_subscription = "data.terraform_remote_state.subscription.outputs.subscription"
 
       cidr_range = bundle.input.network_cidr_range.value
     }

@@ -6,7 +6,7 @@ module "firewall" {
     "example.org",
   ]
   context = module.this.context
-  network = module.network.outputs.network
+  network = data.terraform_remote_state.network.outputs.network
   source  = "../../../../components/az-subscription-firewall"
 }
 output "firewall" {

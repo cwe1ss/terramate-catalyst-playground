@@ -28,13 +28,16 @@ define bundle stack "firewall" {
     }
   }
 
-  component "network" {
-    source = "/components/remote-state"
+  component "data" {
+    source = "/components/component-data"
     inputs = {
-      module_name = "network"
-      backend     = "local"
-      config = {
-        path = "../network/terraform.tfstate"
+      components = {
+        network = {
+          backend = "local"
+          config = {
+            path = "../network/terraform.tfstate"
+          }
+        }
       }
     }
   }
@@ -43,7 +46,7 @@ define bundle stack "firewall" {
     source = "/components/az-subscription-firewall"
 
     inputs = {
-      hcl_reference_network = "module.network.outputs.network"
+      hcl_reference_network = "data.terraform_remote_state.network.outputs.network"
 
       internet_allowed_fqdns = bundle.input.firewall_internet_allowed_fqdns.value
     }
