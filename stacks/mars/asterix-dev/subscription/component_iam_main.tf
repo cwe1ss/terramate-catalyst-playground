@@ -1,6 +1,7 @@
 // TERRAMATE: GENERATED AUTOMATICALLY DO NOT EDIT
 
 module "iam" {
+  context = module.this.context
   groups = {
     admin = {
       role = "admin"
@@ -15,7 +16,6 @@ module "iam" {
       ]
     }
   }
-  context      = module.this.context
   source       = "../../../../components/az-subscription-iam"
   subscription = module.subscription
 }

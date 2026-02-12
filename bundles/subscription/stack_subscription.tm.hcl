@@ -3,7 +3,6 @@
 define bundle stack "subscription" {
   metadata {
     path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/subscription"
-    name = "Subscription"
 
     tags = [
       bundle.class,

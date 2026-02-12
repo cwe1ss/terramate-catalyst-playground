@@ -16,18 +16,12 @@ define "component" {
 
 generate_hcl "main.tf" {
   content {
-    tm_dynamic "module" {
-      labels = ["firewall"]
-      attributes = {
-        for key, input in component.input : key => input.value
-        if !tm_startswith(key, "hcl_")
-      }
+    module "firewall" {
+      source  = tm_source(".")
+      context = module.this.context
+      network = tm_hcl_expression(component.input.hcl_reference_network.value)
 
-      content {
-        source  = tm_source(".")
-        context = module.this.context
-        network = tm_hcl_expression(component.input.hcl_reference_network.value)
-      }
+      internet_allowed_fqdns = component.input.internet_allowed_fqdns.value
     }
 
     output "firewall" {

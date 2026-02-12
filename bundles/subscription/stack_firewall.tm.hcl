@@ -3,7 +3,6 @@ define bundle stack "firewall" {
 
   metadata {
     path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/firewall"
-    name = "Firewall"
 
     tags = [
       bundle.class,

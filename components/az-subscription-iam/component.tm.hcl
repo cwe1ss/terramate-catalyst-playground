@@ -14,18 +14,12 @@ define "component" {
 
 generate_hcl "main.tf" {
   content {
-    tm_dynamic "module" {
-      labels = ["iam"]
-      attributes = {
-        for key, input in component.input : key => input.value
-        if !tm_startswith(key, "hcl_")
-      }
+    module "iam" {
+      source       = tm_source(".")
+      context      = module.this.context
+      subscription = tm_hcl_expression(component.input.hcl_reference_subscription.value)
 
-      content {
-        source       = tm_source(".")
-        context      = module.this.context
-        subscription = tm_hcl_expression(component.input.hcl_reference_subscription.value)
-      }
+      groups = component.input.groups.value
     }
 
     output "iam" {

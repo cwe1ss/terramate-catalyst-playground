@@ -17,16 +17,12 @@ define "component" {
 
 generate_hcl "main.tf" {
   content {
-    tm_dynamic "module" {
-      labels = ["subscription"]
-      attributes = {
-        for key, input in component.input : key => input.value
-      }
+    module "subscription" {
+      source  = tm_source(".")
+      context = module.this.context
 
-      content {
-        source  = tm_source(".")
-        context = module.this.context
-      }
+      budget_amount      = component.input.budget_amount.value
+      resource_providers = component.input.resource_providers.value
     }
 
     output "subscription" {

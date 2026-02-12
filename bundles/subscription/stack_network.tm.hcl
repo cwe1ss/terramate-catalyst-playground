@@ -4,11 +4,6 @@ define bundle stack "network" {
   metadata {
     path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/network"
 
-    name        = "Network"
-    description = <<-EOF
-      Subscription
-    EOF
-
     tags = [
       bundle.class,
       "${bundle.class}/network",

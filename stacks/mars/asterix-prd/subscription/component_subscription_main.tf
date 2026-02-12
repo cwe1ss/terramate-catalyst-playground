@@ -2,12 +2,12 @@
 
 module "subscription" {
   budget_amount = 500
+  context       = module.this.context
   resource_providers = [
     "Microsoft.Network",
     "Microsoft.Consumption",
   ]
-  context = module.this.context
-  source  = "../../../../components/az-subscription"
+  source = "../../../../components/az-subscription"
 }
 output "subscription" {
   value = module.subscription

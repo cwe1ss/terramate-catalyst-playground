@@ -15,18 +15,12 @@ define "component" {
 
 generate_hcl "main.tf" {
   content {
-    tm_dynamic "module" {
-      labels = ["network"]
-      attributes = {
-        for key, input in component.input : key => input.value
-        if !tm_startswith(key, "hcl_")
-      }
+    module "network" {
+      source       = tm_source(".")
+      context      = module.this.context
+      subscription = tm_hcl_expression(component.input.hcl_reference_subscription.value)
 
-      content {
-        source       = tm_source(".")
-        context      = module.this.context
-        subscription = tm_hcl_expression(component.input.hcl_reference_subscription.value)
-      }
+      cidr_range = component.input.cidr_range.value
     }
 
     output "network" {
