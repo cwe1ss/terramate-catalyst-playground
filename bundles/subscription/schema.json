@@ -53,50 +53,68 @@
       }
     }
   },
-  "required": [
-    "apiVersion",
-    "kind"
-  ],
   "definitions": {
     "inputs": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "tenant": {
-          "type": "string"
+          "type": "string",
+          "title": "Tenant",
+          "description": "Choose the tenant to which this project belongs"
         },
         "project": {
-          "type": "string"
+          "type": "string",
+          "title": "Project name",
+          "description": "Choose a project name (lowercase)"
         },
         "budget_amount": {
-          "type": "number"
+          "type": "number",
+          "title": "Monthly budget",
+          "description": "Enter the monthly budget in EUR",
+          "default": 0
         },
         "resource_providers": {
           "type": "array",
+          "title": "Resource Providers",
+          "description": "Resource providers for the subscription",
           "items": {
             "type": "string"
-          }
+          },
+          "default": []
         },
         "iam_admin_users": {
           "type": "array",
+          "title": "IAM: Admin Users",
+          "description": "Please enter a list of admins",
           "items": {
             "type": "string"
-          }
+          },
+          "default": []
         },
         "iam_readonly_users": {
           "type": "array",
+          "title": "IAM: ReadOnly Users",
+          "description": "Please enter a list of readonly users",
           "items": {
             "type": "string"
-          }
+          },
+          "default": []
         },
         "network_cidr_range": {
-          "type": "string"
+          "type": "string",
+          "title": "Network: CIDR Range",
+          "description": "Optional: Enter a CIDR range if this project should get a VNet",
+          "default": ""
         },
         "firewall_internet_allowed_fqdns": {
           "type": "array",
+          "title": "Network Firewall: Allowed Internet FQDNs",
+          "description": "Enter the FQDNs which this workload is allowed to access",
           "items": {
             "type": "string"
-          }
+          },
+          "default": []
         }
       }
     }
