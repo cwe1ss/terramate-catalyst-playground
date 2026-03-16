@@ -22,5 +22,9 @@
 			]
 		}
 	},
+	"mounts": [
+		"type=bind,source=${localWorkspaceFolder},target=/work",
+		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/home/vscode/.ssh,readonly"
+	],
 	"onCreateCommand": "terraform -install-autocomplete && terramate install-completions"
 }
