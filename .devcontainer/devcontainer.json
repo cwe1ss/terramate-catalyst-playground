@@ -10,6 +10,10 @@
 			"libName": "terramate",
 			"binaryNames": "terramate,terramate-ls",
 			"version": "0.17.0-rc2"
+		},
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+			"jqVersion": "none",
+			"yqVersion": "latest"
 		}
 	},
 	"customizations": {

@@ -25,7 +25,7 @@ def input_to_property:
   . as $input
   | {
     "type": ($input.type | hcl_type_to_json_schema),
-    "title": ($input.prompt // ""),
+    "title": ($input.prompt.text // ""),
     "description": ($input.description // "")
   }
   | if .type == "array" then
