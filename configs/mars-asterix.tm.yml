@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=../bundles/subscription/schema.json
 apiVersion: terramate.io/cli/v1
 kind: BundleInstance
 metadata:

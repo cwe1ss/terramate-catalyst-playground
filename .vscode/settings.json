@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "bundles/subscription/schema.json": "configs/*.tm.yml"
+  }
+}
