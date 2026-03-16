@@ -6,13 +6,14 @@ define "component" "metadata" {
 
 define "component" {
   input "components" {
-    type = map(any)
+    type = map(object)
 
-    # attribute "backend" {
-    #   type = string
-    # }
-    # attribute "config" {
-    #   type = any
-    # }
+    attribute "backend" {
+      type = string
+    }
+
+    attribute "config" {
+      type = any
+    }
   }
 }

@@ -5,6 +5,7 @@ module "firewall" {
   internet_allowed_fqdns = [
     "terramate.io",
     "example.org",
+    "example.com",
   ]
   network = data.terraform_remote_state.network.outputs.network
   source  = "../../../../components/az-subscription-firewall"

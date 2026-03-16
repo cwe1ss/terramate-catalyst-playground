@@ -18,15 +18,22 @@ spec:
     iam_readonly_users:
       - "cto@example.org"
 
-    firewall_internet_allowed_fqdns:
-      - "terramate.io"
-      - "example.org"
+    network:
+      internet_allowed_fqdns:
+        - "terramate.io"
+        - "example.org"
 
 environments:
   dev:
     inputs:
-      network_cidr_range: "192.168.1.0/24"
+      network:
+        cidr_range: "192.168.1.0/24"
+        internet_allowed_fqdns:
+          - "terramate.io"
+          - "example.org"
+          - "example.com"
 
   prd:
     inputs:
-      network_cidr_range: "192.168.2.0/24"
+      network:
+        cidr_range: "192.168.2.0/24"

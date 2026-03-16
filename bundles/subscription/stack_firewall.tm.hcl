@@ -1,5 +1,9 @@
 define bundle stack "firewall" {
-  condition = tm_length(bundle.input.firewall_internet_allowed_fqdns.value) > 0
+  condition = (
+    bundle.input.network.value != null
+    && bundle.input.network.value != {}
+    && tm_length(bundle.input.network.value.internet_allowed_fqdns) > 0
+  )
 
   metadata {
     path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/firewall"
@@ -47,7 +51,7 @@ define bundle stack "firewall" {
     inputs = {
       hcl_reference_network = "data.terraform_remote_state.network.outputs.network"
 
-      internet_allowed_fqdns = bundle.input.firewall_internet_allowed_fqdns.value
+      internet_allowed_fqdns = bundle.input.network.value.internet_allowed_fqdns
     }
   }
 }

@@ -1,5 +1,5 @@
 define bundle stack "network" {
-  condition = bundle.input.network_cidr_range.value != null && bundle.input.network_cidr_range.value != ""
+  condition = bundle.input.network.value != null && bundle.input.network.value != {}
 
   metadata {
     path = "/stacks/${bundle.input.tenant.value}/${bundle.input.project.value}-${bundle.environment.id}/network"
@@ -46,7 +46,7 @@ define bundle stack "network" {
     inputs = {
       hcl_reference_subscription = "data.terraform_remote_state.subscription.outputs.subscription"
 
-      cidr_range = bundle.input.network_cidr_range.value
+      cidr_range = bundle.input.network.value.cidr_range
     }
   }
 }

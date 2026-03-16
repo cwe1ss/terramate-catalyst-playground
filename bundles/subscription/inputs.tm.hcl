@@ -63,23 +63,31 @@ define bundle {
     }
   }
 
-  input "network_cidr_range" {
-    type        = string
-    description = "Optional: Enter a CIDR range if this project should get a VNet"
-    default     = ""
+  input "network" {
+    type        = object
+    description = "Network configuration for the subscription"
+    default     = null
 
     prompt {
-      text = "Network: CIDR Range"
+      text = "Network configuration"
     }
-  }
 
-  input "firewall_internet_allowed_fqdns" {
-    type        = set(string)
-    description = "Enter the FQDNs which this workload is allowed to access"
-    default     = []
+    attribute "cidr_range" {
+      type        = string
+      description = "Optional: Enter a CIDR range if this project should get a VNet"
 
-    prompt {
-      text = "Network Firewall: Allowed Internet FQDNs"
+      prompt {
+        text = "Network: CIDR Range"
+      }
+    }
+    attribute "internet_allowed_fqdns" {
+      type        = list(string)
+      description = "Enter the FQDNs which this workload is allowed to access"
+      default     = []
+
+      prompt {
+        text = "Network Firewall: Allowed Internet FQDNs"
+      }
     }
   }
 }

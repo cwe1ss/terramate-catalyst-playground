@@ -20,9 +20,9 @@ def get_items_type:
     "string"
   end;
 
-# Helper function to convert a single input definition to JSON Schema property
-def input_to_property:
-  . as $input
+# Helper function to convert a single attribute or input definition to JSON Schema property (without handling nested attributes)
+def attr_to_property($input):
+  $input
   | {
     "type": ($input.type | hcl_type_to_json_schema),
     "title": ($input.prompt.text // ""),
@@ -33,6 +33,24 @@ def input_to_property:
     else . end
   | if $input.default != null then
       . + { "default": $input.default }
+    else . end;
+
+# Helper function to build properties object from attribute definitions
+def build_properties:
+  reduce (to_entries[]) as $attr (
+    {};
+    . + { ($attr.key): ($attr.value | attr_to_property(.)) }
+  );
+
+# Helper function to convert a single input definition to JSON Schema property
+def input_to_property:
+  . as $input | attr_to_property($input)
+  | if ($input.type | startswith("map(")) and ($input.attribute // {}) != {} then
+      . + { "additionalProperties": { "type": "object", "properties": ($input.attribute | build_properties) } }
+    elif .type == "object" and ($input.attribute // {}) != {} then
+      . + { "properties": ($input.attribute | build_properties) }
+    elif .type == "array" and ($input.type | get_items_type) == "object" and ($input.attribute // {}) != {} then
+      .items += { "properties": ($input.attribute | build_properties) }
     else . end;
 
 # Helper function to build properties object from input definitions
