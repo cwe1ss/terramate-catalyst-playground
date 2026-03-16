@@ -1,0 +1,26 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/terraform-asdf:2": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-extra/features/gh-release:1": {
+			"repo": "terramate-io/terramate",
+			"libName": "terramate",
+			"binaryNames": "terramate,terramate-ls",
+			"version": "0.17.0-rc2"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"hashicorp.terraform",
+				"mineiros.terramate",
+				"redhat.vscode-yaml"
+			]
+		}
+	},
+	"onCreateCommand": "terraform -install-autocomplete && terramate install-completions"
+}
