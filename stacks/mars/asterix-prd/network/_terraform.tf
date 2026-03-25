@@ -1,6 +1,5 @@
 # TERRAMATE: GENERATED AUTOMATICALLY DO NOT EDIT
 
 terraform {
-  backend "local" {
-  }
+  required_version = "~> 1.14.1"
 }

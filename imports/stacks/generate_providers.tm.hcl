@@ -60,7 +60,7 @@
 # - or just remove this file.
 # - To rename the generated file or change/extend the behavior, just edit it below ;)
 
-generate_hcl "terraform.tf" {
+generate_hcl "_terraform.tf" {
   # Check whether we want to generate the file.
   condition = tm_alltrue([
     tm_try(global.terraform.disabled != true, true),

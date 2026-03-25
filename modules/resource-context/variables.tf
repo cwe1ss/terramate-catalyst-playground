@@ -1,13 +1,3 @@
-variable "context" {
-  type = object({
-    tenant = optional(string, "")
-    stage  = optional(string, "")
-    names  = optional(list(string), [])
-  })
-  nullable = false
-  default  = {}
-}
-
 variable "tenant" {
   type     = string
   nullable = false

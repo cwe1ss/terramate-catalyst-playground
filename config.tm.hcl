@@ -1,12 +1,12 @@
 globals "terraform" {
   version = "~> 1.14.1"
+  backend = {
+    type = "local"
+  }
 }
 
-globals "terraform" "backend" {
-  type = "local"
-}
-
-globals {
+# Options for the Terramate UI
+globals "terramate" "prompt" {
   tenants = {
     "mars"  = "Organization Mars"
     "venus" = "Organization Venus"

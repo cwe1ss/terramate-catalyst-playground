@@ -8,7 +8,7 @@ define bundle {
       text        = "Tenant"
       multiselect = false
       options = [
-        for k, v in global.tenants : { name = v, value = k }
+        for k, v in global.terramate.prompt.tenants : { name = v, value = k }
       ]
     }
   }

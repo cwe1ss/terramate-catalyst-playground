@@ -1,11 +1,10 @@
 terramate {
   config {
     disable_safeguards = ["git"]
+    generate {
+      hcl_magic_header_comment_style = "#"
+    }
   }
-}
-
-import {
-  source = "imports/mixins/*.tm.hcl"
 }
 
 environment {

@@ -1,4 +1,4 @@
-generate_hcl "backend.tf" {
+generate_hcl "_backend.tf" {
   condition = tm_alltrue([
     tm_try(global.terraform.backend.type == "s3", false),
     tm_can(global.terraform.backend.s3.region),

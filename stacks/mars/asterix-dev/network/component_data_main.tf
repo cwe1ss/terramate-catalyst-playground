@@ -1,4 +1,4 @@
-// TERRAMATE: GENERATED AUTOMATICALLY DO NOT EDIT
+# TERRAMATE: GENERATED AUTOMATICALLY DO NOT EDIT
 
 resource "terraform_data" "data_dependencies" {
 }
