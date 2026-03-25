@@ -1,6 +1,7 @@
 define bundle {
   input "tenant" {
     type        = string
+    immutable   = true
     description = "Choose the tenant to which this project belongs"
 
     prompt {
@@ -14,6 +15,7 @@ define bundle {
 
   input "project" {
     type        = string
+    immutable   = true
     description = "Choose a project name (lowercase)"
 
     prompt {
