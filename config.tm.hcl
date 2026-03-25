@@ -8,8 +8,8 @@ globals "terraform" {
 # Options for the Terramate UI
 globals "terramate" "prompt" {
   tenants = {
-    "mars"  = "Organization Mars"
-    "venus" = "Organization Venus"
+    "acme"   = "Acme Corp"
+    "zenith" = "Zenith Corp"
   }
 }
 

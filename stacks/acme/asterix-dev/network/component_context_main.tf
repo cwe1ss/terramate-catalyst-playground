@@ -5,6 +5,6 @@ module "this" {
     "asterix",
   ]
   stage  = "dev"
-  tenant = "mars"
+  tenant = "acme"
   source = "../../../../modules/resource-context"
 }

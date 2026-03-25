@@ -1,12 +1,12 @@
 apiVersion: terramate.io/cli/v1
 kind: BundleInstance
 metadata:
-  name: mars-asterix
+  name: acme-asterix
   uuid: 81a76698-eb4d-4e2e-b9d8-a1a355956ba9
 spec:
   source: /bundles/subscription
   inputs:
-    tenant: mars
+    tenant: acme
     project: asterix
 
     resource_providers:
