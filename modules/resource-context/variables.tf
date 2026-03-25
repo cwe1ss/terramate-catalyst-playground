@@ -1,3 +1,14 @@
+variable "context" {
+  type = object({
+    tenant = optional(string, "")
+    stage  = optional(string, "")
+    names  = optional(list(string), [])
+  })
+  nullable    = false
+  default     = {}
+  description = "The resource context"
+}
+
 variable "tenant" {
   type     = string
   nullable = false

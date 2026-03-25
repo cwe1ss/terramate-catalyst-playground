@@ -36,7 +36,6 @@ define bundle stack "firewall" {
     inputs = {
       stacks = {
         network = {
-          backend = "local"
           config = {
             path = "../network/terraform.tfstate"
           }

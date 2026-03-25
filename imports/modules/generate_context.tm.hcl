@@ -1,4 +1,6 @@
 generate_hcl "_context.tf" {
+  condition = terramate.stack.name != "resource-context"
+
   content {
     variable "context" {
       type = object({

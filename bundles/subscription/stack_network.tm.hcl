@@ -31,7 +31,6 @@ define bundle stack "network" {
     inputs = {
       stacks = {
         subscription = {
-          backend = "local"
           config = {
             path = "../subscription/terraform.tfstate"
           }
