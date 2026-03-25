@@ -58,6 +58,27 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "network": {
+          "type": "object",
+          "title": "Network configuration",
+          "description": "Network configuration for the subscription",
+          "properties": {
+            "cidr_range": {
+              "type": "string",
+              "title": "Network: CIDR Range",
+              "description": "Optional: Enter a CIDR range if this project should get a VNet"
+            },
+            "internet_allowed_fqdns": {
+              "type": "array",
+              "title": "Network Firewall: Allowed Internet FQDNs",
+              "description": "Enter the FQDNs which this workload is allowed to access",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          }
+        },
         "tenant": {
           "type": "string",
           "title": "Tenant",
@@ -100,27 +121,6 @@
             "type": "string"
           },
           "default": []
-        },
-        "network": {
-          "type": "object",
-          "title": "Network configuration",
-          "description": "Network configuration for the subscription",
-          "properties": {
-            "cidr_range": {
-              "type": "string",
-              "title": "Network: CIDR Range",
-              "description": "Optional: Enter a CIDR range if this project should get a VNet"
-            },
-            "internet_allowed_fqdns": {
-              "type": "array",
-              "title": "Network Firewall: Allowed Internet FQDNs",
-              "description": "Enter the FQDNs which this workload is allowed to access",
-              "items": {
-                "type": "string"
-              },
-              "default": []
-            }
-          }
         }
       }
     }

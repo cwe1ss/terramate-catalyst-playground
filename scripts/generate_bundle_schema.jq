@@ -1,6 +1,6 @@
 # Convert bundle inputs (parsed as JSON by yq) to a JSON Schema
 #
-# Usage: yq -o json inputs.tm.hcl | jq -f generate_bundle_schema.jq
+# Usage: array of input objects | jq -f generate_bundle_schema.jq
 
 # Helper function to convert HCL type to JSON Schema type(s)
 def hcl_type_to_json_schema:
@@ -63,7 +63,10 @@ def build_input_properties:
   );
 
 # Main conversion logic
-{
+# Input is an array of input objects
+(reduce .[] as $input ({}; . * $input)) as $merged_inputs
+| {"define": {"bundle": {"input": $merged_inputs}}} as $root
+| {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
@@ -123,9 +126,7 @@ def build_input_properties:
       "type": "object",
       "additionalProperties": false,
       "properties": (
-        . as $root
-        | ($root.define.bundle.input | to_entries)
-        | build_input_properties
+        $root.define.bundle.input | to_entries | build_input_properties
       )
     }
   }
