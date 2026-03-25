@@ -18,7 +18,7 @@ generate_hcl "_backend.tf" {
   }
 }
 
-generate_hcl "backend.tf" {
+generate_hcl "_backend.tf" {
   condition = tm_alltrue([
     tm_try(global.terraform.backend.type == "local", false),
   ])
