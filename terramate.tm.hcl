@@ -1,6 +1,8 @@
 terramate {
   config {
     disable_safeguards = ["git"]
+    experiments = ["scripts"]
+
     generate {
       hcl_magic_header_comment_style = "#"
     }
