@@ -1,10 +1,10 @@
-define "component" "metadata" {
-  class   = "components/stack-data"
-  version = "1.0.0"
-  name    = "stack-data"
-}
-
 define "component" {
+  metadata {
+    class   = "components/stack-data"
+    version = "1.0.0"
+    name    = "stack-data"
+  }
+
   input "stacks" {
     type = map(object)
 

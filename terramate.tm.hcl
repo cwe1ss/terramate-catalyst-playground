@@ -6,6 +6,13 @@ terramate {
     generate {
       hcl_magic_header_comment_style = "#"
     }
+
+    run {
+      env {
+        # Reduce the output verbosity of Terraform commands
+        TF_IN_AUTOMATION = "1"
+      }
+    }
   }
 }
 

@@ -4,7 +4,7 @@ module "this" {
   names = [
     "asterix",
   ]
+  source = "../../../../modules/resource-context"
   stage  = "dev"
   tenant = "acme"
-  source = "../../../../modules/resource-context"
 }
