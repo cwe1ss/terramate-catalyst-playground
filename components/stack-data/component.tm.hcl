@@ -1,11 +1,11 @@
 define "component" "metadata" {
-  class   = "components/component-data"
+  class   = "components/stack-data"
   version = "1.0.0"
-  name    = "component-data"
+  name    = "stack-data"
 }
 
 define "component" {
-  input "components" {
+  input "stacks" {
     type = map(object)
 
     attribute "backend" {

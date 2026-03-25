@@ -32,9 +32,9 @@ define bundle stack "firewall" {
   }
 
   component "data" {
-    source = "/components/component-data"
+    source = "/components/stack-data"
     inputs = {
-      components = {
+      stacks = {
         network = {
           backend = "local"
           config = {

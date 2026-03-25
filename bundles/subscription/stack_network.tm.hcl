@@ -27,9 +27,9 @@ define bundle stack "network" {
   }
 
   component "data" {
-    source = "/components/component-data"
+    source = "/components/stack-data"
     inputs = {
-      components = {
+      stacks = {
         subscription = {
           backend = "local"
           config = {

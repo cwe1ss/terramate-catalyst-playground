@@ -4,7 +4,7 @@ generate_hcl "main.tf" {
     }
 
     tm_dynamic "data" {
-      for_each = component.input.components.value
+      for_each = component.input.stacks.value
       iterator = each
 
       labels = ["terraform_remote_state", each.key]
