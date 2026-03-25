@@ -25,7 +25,7 @@ generate_hcl "main.tf" {
       }
 
       content {
-        source = tm_source(".")
+        source = tm_source("/modules/resource-context")
       }
     }
   }

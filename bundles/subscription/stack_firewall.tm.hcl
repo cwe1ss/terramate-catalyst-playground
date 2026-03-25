@@ -46,12 +46,20 @@ define bundle stack "firewall" {
   }
 
   component "firewall" {
-    source = "/components/az-subscription-firewall"
+    source = "/components/terraform-module"
 
     inputs = {
-      hcl_reference_network = "data.terraform_remote_state.network.outputs.network"
+      module_source = "/modules/az-subscription-firewall"
+      module_name   = "firewall"
 
-      internet_allowed_fqdns = bundle.input.network.value.internet_allowed_fqdns
+      hcl_variables = {
+        context = "module.this.context"
+        network = "data.terraform_remote_state.network.outputs.network"
+      }
+
+      variables = {
+        internet_allowed_fqdns = bundle.input.network.value.internet_allowed_fqdns
+      }
     }
   }
 }

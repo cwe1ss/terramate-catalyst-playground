@@ -6,5 +6,5 @@ module "this" {
   ]
   stage  = "prd"
   tenant = "mars"
-  source = "../../../../components/resource-context"
+  source = "../../../../modules/resource-context"
 }

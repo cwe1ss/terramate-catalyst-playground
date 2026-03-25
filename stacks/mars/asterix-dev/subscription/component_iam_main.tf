@@ -16,7 +16,7 @@ module "iam" {
       ]
     }
   }
-  source       = "../../../../components/az-subscription-iam"
+  source       = "../../../../modules/az-subscription-iam"
   subscription = module.subscription
 }
 output "iam" {

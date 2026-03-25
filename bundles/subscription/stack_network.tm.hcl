@@ -41,12 +41,20 @@ define bundle stack "network" {
   }
 
   component "network" {
-    source = "/components/az-subscription-network"
+    source = "/components/terraform-module"
 
     inputs = {
-      hcl_reference_subscription = "data.terraform_remote_state.subscription.outputs.subscription"
+      module_source = "/modules/az-subscription-network"
+      module_name   = "network"
 
-      cidr_range = bundle.input.network.value.cidr_range
+      hcl_variables = {
+        context      = "module.this.context"
+        subscription = "data.terraform_remote_state.subscription.outputs.subscription"
+      }
+
+      variables = {
+        cidr_range = bundle.input.network.value.cidr_range
+      }
     }
   }
 }

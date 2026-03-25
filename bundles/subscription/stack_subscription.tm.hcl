@@ -23,35 +23,52 @@ define bundle stack "subscription" {
   }
 
   component "subscription" {
-    source = "/components/az-subscription"
+    source = "/components/terraform-module"
 
     inputs = {
-      budget_amount = (bundle.input.budget_amount.value > 0
-        ? bundle.input.budget_amount.value
-        : tm_try(global.component_defaults.subscription.budget_amount, 100)
-      )
+      module_source = "/modules/az-subscription"
+      module_name   = "subscription"
 
-      resource_providers = tm_concat(
-        bundle.input.resource_providers.value,
-        tm_try(global.component_defaults.subscription.resource_providers, []),
-      )
+      hcl_variables = {
+        context = "module.this.context"
+      }
+
+      variables = {
+        budget_amount = (bundle.input.budget_amount.value > 0
+          ? bundle.input.budget_amount.value
+          : tm_try(global.component_defaults.subscription.budget_amount, 100)
+        )
+
+        resource_providers = tm_concat(
+          bundle.input.resource_providers.value,
+          tm_try(global.component_defaults.subscription.resource_providers, []),
+        )
+      }
     }
   }
 
   component "iam" {
-    source = "/components/az-subscription-iam"
+    source = "/components/terraform-module"
 
     inputs {
-      hcl_reference_subscription = "module.subscription"
+      module_source = "/modules/az-subscription-iam"
+      module_name   = "iam"
 
-      groups = {
-        admin = {
-          users = bundle.input.iam_admin_users.value
-          role  = "admin"
-        }
-        readonly = {
-          users = bundle.input.iam_readonly_users.value
-          role  = "readonly"
+      hcl_variables = {
+        context      = "module.this.context"
+        subscription = "module.subscription"
+      }
+
+      variables = {
+        groups = {
+          admin = {
+            users = bundle.input.iam_admin_users.value
+            role  = "admin"
+          }
+          readonly = {
+            users = bundle.input.iam_readonly_users.value
+            role  = "readonly"
+          }
         }
       }
     }

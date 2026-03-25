@@ -7,7 +7,7 @@ module "subscription" {
     "Microsoft.Network",
     "Microsoft.Consumption",
   ]
-  source = "../../../../components/az-subscription"
+  source = "../../../../modules/az-subscription"
 }
 output "subscription" {
   value = module.subscription

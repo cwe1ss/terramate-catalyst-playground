@@ -8,7 +8,7 @@ module "firewall" {
     "example.com",
   ]
   network = data.terraform_remote_state.network.outputs.network
-  source  = "../../../../components/az-subscription-firewall"
+  source  = "../../../../modules/az-subscription-firewall"
 }
 output "firewall" {
   value = module.firewall
