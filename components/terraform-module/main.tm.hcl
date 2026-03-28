@@ -13,7 +13,12 @@ generate_hcl "main.tf" {
         {
           for key, value in component.input.variables.value : key => value
           if value != null
-        }
+        },
+        tm_length(component.input.providers.value) > 0 ? {
+          providers = {
+            for provider, value in component.input.providers.value : provider => tm_hcl_expression(value)
+          }
+        } : {},
       )
     }
 

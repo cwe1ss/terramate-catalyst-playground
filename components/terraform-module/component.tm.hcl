@@ -24,4 +24,10 @@ define "component" {
     type        = map(any)
     description = "Module variables that will use `{key} = {value}`."
   }
+
+  input "providers" {
+    type        = map(string)
+    default     = {}
+    description = "Meta-argument for explicit mapping of providers which the module uses."
+  }
 }

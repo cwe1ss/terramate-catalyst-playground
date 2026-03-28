@@ -1,4 +1,6 @@
 generate_hcl "main.tf" {
+  condition = tm_length(component.input.stacks.value) > 0
+
   content {
     tm_dynamic "resource" {
       condition = tm_anytrue([

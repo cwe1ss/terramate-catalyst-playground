@@ -10,11 +10,11 @@ define "component" {
     default = []
 
     attribute "to" {
-      type = string
+      type        = string
       description = "The instance address to import the resource into. It must match the address of an existing `resource` block."
     }
     attribute "id" {
-      type = string
+      type        = string
       description = "The cloud provider's ID for the resource to import."
     }
   }
@@ -24,11 +24,11 @@ define "component" {
     default = []
 
     attribute "from" {
-      type = string
+      type        = string
       description = "The resources's previous address."
     }
     attribute "to" {
-      type = string
+      type        = string
       description = "The new address to relocate the resource to."
     }
   }
