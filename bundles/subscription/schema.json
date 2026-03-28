@@ -80,6 +80,48 @@
             }
           }
         },
+        "state_import": {
+          "type": "array",
+          "title": "",
+          "description": "Import existing infrastructure using Terraform import blocks.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "to": {
+                "type": "string",
+                "title": "",
+                "description": "The instance address to import the resource into. It must match the address of an existing `resource` block."
+              },
+              "id": {
+                "type": "string",
+                "title": "",
+                "description": "The cloud provider's ID for the resource to import."
+              }
+            }
+          },
+          "default": []
+        },
+        "state_moved": {
+          "type": "array",
+          "title": "",
+          "description": "Move resources in Terraform state from one address to another.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string",
+                "title": "",
+                "description": "The resources's previous address."
+              },
+              "to": {
+                "type": "string",
+                "title": "",
+                "description": "The new address to relocate the resource to."
+              }
+            }
+          },
+          "default": []
+        },
         "tenant": {
           "type": "string",
           "title": "Tenant",

@@ -73,4 +73,13 @@ define bundle stack "subscription" {
       }
     }
   }
+
+  component "state" {
+    source = "/components/state-manipulation"
+
+    inputs {
+      import = bundle.input.state_import.value
+      moved  = bundle.input.state_moved.value
+    }
+  }
 }
