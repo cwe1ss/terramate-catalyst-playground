@@ -26,7 +26,7 @@ def attr_to_property($input):
   | {
     "type": ($input.type | hcl_type_to_json_schema),
     "title": ($input.prompt.text // ""),
-    "description": ($input.description // "")
+    "markdownDescription": ($input.description // "")
   }
   | if .type == "array" then
       . + { "items": { "type": ($input.type | get_items_type) } }

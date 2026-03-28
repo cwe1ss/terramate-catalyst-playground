@@ -61,18 +61,18 @@
         "network": {
           "type": "object",
           "title": "Network configuration",
-          "description": "Network configuration for the subscription",
+          "markdownDescription": "Network configuration for the subscription",
           "default": {},
           "properties": {
             "cidr_range": {
               "type": "string",
               "title": "Network: CIDR Range",
-              "description": "Optional: Enter a CIDR range if this project should get a VNet"
+              "markdownDescription": "Optional: Enter a CIDR range if this project should get a VNet"
             },
             "internet_allowed_fqdns": {
               "type": "array",
               "title": "Network Firewall: Allowed Internet FQDNs",
-              "description": "Enter the FQDNs which this workload is allowed to access",
+              "markdownDescription": "Enter the FQDNs which this workload is allowed to access",
               "items": {
                 "type": "string"
               },
@@ -83,19 +83,19 @@
         "state_import": {
           "type": "array",
           "title": "",
-          "description": "Import existing infrastructure using Terraform import blocks.",
+          "markdownDescription": "Import existing infrastructure using Terraform import blocks.",
           "items": {
             "type": "object",
             "properties": {
               "to": {
                 "type": "string",
                 "title": "",
-                "description": "The instance address to import the resource into. It must match the address of an existing `resource` block."
+                "markdownDescription": "The instance address to import the resource into. It must match the address of an existing `resource` block."
               },
               "id": {
                 "type": "string",
                 "title": "",
-                "description": "The cloud provider's ID for the resource to import."
+                "markdownDescription": "The cloud provider's ID for the resource to import."
               }
             }
           },
@@ -104,19 +104,19 @@
         "state_moved": {
           "type": "array",
           "title": "",
-          "description": "Move resources in Terraform state from one address to another.",
+          "markdownDescription": "Move resources in Terraform state from one address to another.",
           "items": {
             "type": "object",
             "properties": {
               "from": {
                 "type": "string",
                 "title": "",
-                "description": "The resources's previous address."
+                "markdownDescription": "The resources's previous address."
               },
               "to": {
                 "type": "string",
                 "title": "",
-                "description": "The new address to relocate the resource to."
+                "markdownDescription": "The new address to relocate the resource to."
               }
             }
           },
@@ -125,23 +125,23 @@
         "tenant": {
           "type": "string",
           "title": "Tenant",
-          "description": "Choose the tenant to which this project belongs"
+          "markdownDescription": "Choose the tenant to which this project belongs"
         },
         "project": {
           "type": "string",
           "title": "Project name",
-          "description": "Choose a project name (lowercase)"
+          "markdownDescription": "Choose a project name (lowercase)"
         },
         "budget_amount": {
           "type": "number",
           "title": "Monthly budget",
-          "description": "Enter the monthly budget in EUR",
+          "markdownDescription": "Enter the monthly budget in EUR",
           "default": 0
         },
         "resource_providers": {
           "type": "array",
           "title": "Resource Providers",
-          "description": "Resource providers for the subscription",
+          "markdownDescription": "Resource providers for the subscription",
           "items": {
             "type": "string"
           },
@@ -150,7 +150,7 @@
         "iam_admin_users": {
           "type": "array",
           "title": "IAM: Admin Users",
-          "description": "Please enter a list of admins",
+          "markdownDescription": "Please enter a list of admins",
           "items": {
             "type": "string"
           },
@@ -159,7 +159,7 @@
         "iam_readonly_users": {
           "type": "array",
           "title": "IAM: ReadOnly Users",
-          "description": "Please enter a list of readonly users",
+          "markdownDescription": "Please enter a list of readonly users",
           "items": {
             "type": "string"
           },
