@@ -67,11 +67,12 @@
             "cidr_range": {
               "type": "string",
               "title": "Network: CIDR Range",
-              "markdownDescription": "Optional: Enter a CIDR range if this project should get a VNet"
+              "markdownDescription": "Optional: Enter a CIDR range if this project should get a VNet",
+              "default": ""
             },
             "internet_allowed_fqdns": {
               "type": "array",
-              "title": "Network Firewall: Allowed Internet FQDNs",
+              "title": "Network: Allowed Internet FQDNs",
               "markdownDescription": "Enter the FQDNs which this workload is allowed to access",
               "items": {
                 "type": "string"
