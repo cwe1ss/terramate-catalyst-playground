@@ -9,8 +9,8 @@ define bundle {
     }
 
     attribute "cidr_range" {
-      type        = string
-      required    = false
+      type = string
+      # required    = false
       default     = ""
       description = "Optional: Enter a CIDR range if this project should get a VNet"
 
@@ -19,8 +19,8 @@ define bundle {
       }
     }
     attribute "internet_allowed_fqdns" {
-      type        = list(string)
-      required    = false
+      type = list(string)
+      # required    = false
       default     = []
       description = "Enter the FQDNs which this workload is allowed to access"
 

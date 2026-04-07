@@ -9,7 +9,7 @@
 			"repo": "terramate-io/terramate",
 			"libName": "terramate",
 			"binaryNames": "terramate,terramate-ls",
-			"version": "0.17.0-rc2"
+			"version": "0.17.0-rc3"
 		},
 		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
 			"jqVersion": "none",

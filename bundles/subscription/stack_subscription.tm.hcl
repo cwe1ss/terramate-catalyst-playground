@@ -34,15 +34,13 @@ define bundle stack "subscription" {
       }
 
       variables = {
-        budget_amount = (bundle.input.budget_amount.value > 0
-          ? bundle.input.budget_amount.value
-          : tm_try(global.component_defaults.subscription.budget_amount, 100)
-        )
+        budget_amount      = bundle.input.budget_amount.value
+        resource_providers = bundle.input.resource_providers.value
+      }
 
-        resource_providers = tm_concat(
-          bundle.input.resource_providers.value,
-          tm_try(global.component_defaults.subscription.resource_providers, []),
-        )
+      merge_configuration = {
+        defaults      = tm_try(global.component_defaults.subscription, {})
+        setunion_keys = ["resource_providers"]
       }
     }
   }

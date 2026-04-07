@@ -4,8 +4,9 @@ module "subscription" {
   budget_amount = 500
   context       = module.this.context
   resource_providers = [
-    "Microsoft.Network",
     "Microsoft.Consumption",
+    "Microsoft.Network",
+    "Microsoft.Security",
   ]
   source = "../../../../modules/az-subscription"
 }

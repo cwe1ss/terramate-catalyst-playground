@@ -136,8 +136,7 @@
         "budget_amount": {
           "type": "number",
           "title": "Monthly budget",
-          "markdownDescription": "Enter the monthly budget in EUR",
-          "default": 0
+          "markdownDescription": "Enter the monthly budget in EUR"
         },
         "resource_providers": {
           "type": "array",

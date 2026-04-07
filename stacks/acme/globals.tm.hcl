@@ -5,5 +5,6 @@ globals "component_defaults" "subscription" {
 
   resource_providers = [
     "Microsoft.Consumption",
+    "Microsoft.Security",
   ]
 }

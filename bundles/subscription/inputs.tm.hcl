@@ -28,7 +28,7 @@ define bundle {
   input "budget_amount" {
     type        = number
     description = "Enter the monthly budget in EUR"
-    default     = 0
+    default     = null
 
     prompt {
       text = "Monthly budget"
@@ -46,7 +46,7 @@ define bundle {
   }
 
   input "iam_admin_users" {
-    type        = list(string)
+    type        = set(string)
     description = "Please enter a list of admins"
     default     = []
 
@@ -56,7 +56,7 @@ define bundle {
   }
 
   input "iam_readonly_users" {
-    type        = list(string)
+    type        = set(string)
     description = "Please enter a list of readonly users"
     default     = []
 
